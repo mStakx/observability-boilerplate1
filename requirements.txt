@@ -28,3 +28,4 @@ PyYAML
 # teamcity-messages
 # watchdog
 # xlrd
+requests
