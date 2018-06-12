@@ -1,15 +1,24 @@
-## DJANGO SITE DEV/PRODUCTION SETUP IN DOCKER CONTAINERS WITH NGINX LOGS IN ELK-STACK
+# Observability Boilerplate for Log-Metric-Tracing Collection
 
-This is my docker-composed setup for develop/deploy django-based sites
+This is a simple observability boilerplate that is aimed at Log-Metric-Tracing collection
+
+## Components
+1. Application:	Python Django
+2. Log Collection: Elastic
+3. Metric Collection: Prometheus
+4. Trace Collection: Zipkin
+5. Dashboarding: Kibana | Grafana | Zipkin
 
 ## It uses:
 
-- python 3.6.x
-- django 2.x
+- python 2.7.10
+- django 1.9
 - redis for django cache/sessions
 - postgresql for django database (dockerized for development, host-based for production)
 - nginx as production webserver, with send_file && secure_link for serve uploaded files
 - elasticsearch + logstash + kibana (ELK) for logging
+- prometheus for metric collection
+- zipkin for distributed tracing
 - ./dc.sh for "docker-compose with development config" shortcut
 - development django container uses sshd for PyCharm's remote project interpretier
 

@@ -45,5 +45,5 @@ else
       --worker-class=gevent \
       --log-level=info \
       --capture-output \
-      project.wsgi:application
+      example_site.wsgi:application
 fi

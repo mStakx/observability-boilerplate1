@@ -22,7 +22,7 @@ services:
     ports:
       - "127.0.0.1:8000:8000"
     environment:
-      - DJANGO_SETTINGS_MODULE=project.settings
+      - DJANGO_SETTINGS_MODULE=example_site.settings
       - DJANGO_DATABASE_ENGINE=django.db.backends.postgresql_psycopg2
       - DJANGO_DATABASE_HOST=${DJANGO_DATABASE_HOST}
       - DJANGO_DATABASE_NAME=${DJANGO_DATABASE_NAME}
@@ -30,3 +30,16 @@ services:
       - DJANGO_DATABASE_PASSWORD=${DJANGO_DATABASE_PASSWORD}
       - DJANGO_LOGSTASH_HOST=logstash
       - DJANGO_LOGSTASH_PORT=5000
+
+  # django:
+  #   ports:
+  #     - "127.0.0.1:8000:8000"
+  #   environment:
+  #     - DJANGO_SETTINGS_MODULE=project.settings
+  #     - DJANGO_DATABASE_ENGINE=django.db.backends.postgresql_psycopg2
+  #     - DJANGO_DATABASE_HOST=${DJANGO_DATABASE_HOST}
+  #     - DJANGO_DATABASE_NAME=${DJANGO_DATABASE_NAME}
+  #     - DJANGO_DATABASE_USER=${DJANGO_DATABASE_USER}
+  #     - DJANGO_DATABASE_PASSWORD=${DJANGO_DATABASE_PASSWORD}
+  #     - DJANGO_LOGSTASH_HOST=logstash
+  #     - DJANGO_LOGSTASH_PORT=5000

@@ -1,5 +1,5 @@
 # beautifulsoup4
-django
+# django
 django-appconf
 # django-compressor
 django-environ
@@ -18,7 +18,7 @@ gevent
 gunicorn
 hiredis
 # Pillow
-psycopg2
+# psycopg2
 # PyJWT
 python-logstash
 pytz
@@ -28,4 +28,12 @@ PyYAML
 # teamcity-messages
 # watchdog
 # xlrd
+# requests
+django==1.9.0
+jaeger-client
+py-zipkin
 requests
+django-prometheus
+psycopg2-binary	
+django_opentracing
+futures

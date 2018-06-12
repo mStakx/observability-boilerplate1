@@ -1,4 +1,4 @@
-FROM python:3
+FROM python:2.7.10
 
 # Prepare os libs
 RUN apt-get update -y && apt-get upgrade -y && apt-get install -y \
@@ -27,7 +27,8 @@ RUN useradd -u 33 www-data | true
 RUN chown -R www-data /media
 
 # Prepare code
-COPY src /code
+COPY django /code
+# COPY src /code
 ENV PYTHONPATH="${PYTHONPATH}:/code"
 WORKDIR /code
 

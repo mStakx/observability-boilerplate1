@@ -5,3 +5,10 @@ watchdog
 tox
 flake8
 pep8
+django==1.9.0
+jaeger-client
+py-zipkin
+requests
+django-prometheus
+django_opentracing
+futures

@@ -42,7 +42,7 @@ services:
     environment:
       - DJANGO_DEV=1
       - DJANGO_DEBUG=1
-      - DJANGO_SETTINGS_MODULE=project.settings
+      - DJANGO_SETTINGS_MODULE=example_site.settings
       - DJANGO_DATABASE_ENGINE=django.db.backends.postgresql_psycopg2
       - DJANGO_DATABASE_HOST=pgsql
       - DJANGO_DATABASE_NAME=zzzzz
@@ -51,26 +51,57 @@ services:
       - DJANGO_LOGSTASH_HOST=logstash
       - DJANGO_LOGSTASH_PORT=5000
     volumes:
-      - ./src:/code
+      - ./django:/code
 
-  django2:
-    build:
-      context: .
-      dockerfile: ./deploy/django2/Dockerfile-dev
+  prometheus:
     ports:
-      - "127.0.0.1:8010:8000"
-      - "127.0.0.1:8011:8001"
-      - "127.0.0.1:8122:22"
-    environment:
-      - DJANGO_DEV=1
-      - DJANGO_DEBUG=1
-      - DJANGO_SETTINGS_MODULE=project.settings
-      - DJANGO_DATABASE_ENGINE=django.db.backends.postgresql_psycopg2
-      - DJANGO_DATABASE_HOST=pgsql
-      - DJANGO_DATABASE_NAME=zzzzz
-      - DJANGO_DATABASE_USER=zzzzz
-      - DJANGO_DATABASE_PASSWORD=12345
-      - DJANGO_LOGSTASH_HOST=logstash
-      - DJANGO_LOGSTASH_PORT=5000
-    volumes:
-      - ./src2:/code
+      - "127.0.0.1:9090:9090"
+
+  grafana:
+    ports:
+      - "127.0.0.1:3000:3000"
+
+      
+  # django:
+  #   build:
+  #     context: .
+  #     dockerfile: ./deploy/django/Dockerfile-dev
+  #   ports:
+  #     - "127.0.0.1:8000:8000"
+  #     - "127.0.0.1:8001:8001"
+  #     - "127.0.0.1:8022:22"
+  #   environment:
+  #     - DJANGO_DEV=1
+  #     - DJANGO_DEBUG=1
+  #     - DJANGO_SETTINGS_MODULE=project.settings
+  #     - DJANGO_DATABASE_ENGINE=django.db.backends.postgresql_psycopg2
+  #     - DJANGO_DATABASE_HOST=pgsql
+  #     - DJANGO_DATABASE_NAME=zzzzz
+  #     - DJANGO_DATABASE_USER=zzzzz
+  #     - DJANGO_DATABASE_PASSWORD=12345
+  #     - DJANGO_LOGSTASH_HOST=logstash
+  #     - DJANGO_LOGSTASH_PORT=5000
+  #   volumes:
+  #     - ./src:/code
+
+  # django2:
+  #   build:
+  #     context: .
+  #     dockerfile: ./deploy/django2/Dockerfile-dev
+  #   ports:
+  #     - "127.0.0.1:8010:8000"
+  #     - "127.0.0.1:8011:8001"
+  #     - "127.0.0.1:8122:22"
+  #   environment:
+  #     - DJANGO_DEV=1
+  #     - DJANGO_DEBUG=1
+  #     - DJANGO_SETTINGS_MODULE=project.settings
+  #     - DJANGO_DATABASE_ENGINE=django.db.backends.postgresql_psycopg2
+  #     - DJANGO_DATABASE_HOST=pgsql
+  #     - DJANGO_DATABASE_NAME=zzzzz
+  #     - DJANGO_DATABASE_USER=zzzzz
+  #     - DJANGO_DATABASE_PASSWORD=12345
+  #     - DJANGO_LOGSTASH_HOST=logstash
+  #     - DJANGO_LOGSTASH_PORT=5000
+  #   volumes:
+  #     - ./src2:/code

@@ -51,19 +51,33 @@ services:
       - redis
       - elasticsearch
       - logstash
+      - zipkin
 
-  django2:
-    depends_on:
-      - data
-      - redis
-      - elasticsearch
-      - logstash
-    volumes_from:
-      - data
-    links:
-      - redis
-      - elasticsearch
-      - logstash
+  # django:
+  #   depends_on:
+  #     - data
+  #     - redis
+  #     - elasticsearch
+  #     - logstash
+  #   volumes_from:
+  #     - data
+  #   links:
+  #     - redis
+  #     - elasticsearch
+  #     - logstash
+
+  # django2:
+  #   depends_on:
+  #     - data
+  #     - redis
+  #     - elasticsearch
+  #     - logstash
+  #   volumes_from:
+  #     - data
+  #   links:
+  #     - redis
+  #     - elasticsearch
+  #     - logstash
 
   nginx:
     depends_on:
