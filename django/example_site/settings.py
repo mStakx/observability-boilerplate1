@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'client',
     'server',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -39,13 +40,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_opentracing',
+    # 'django_opentracing',
     'django_prometheus',
 ]
 
 MIDDLEWARE_CLASSES = [
     'django_prometheus.middleware.PrometheusBeforeMiddleware',
-    'django_opentracing.OpenTracingMiddleware',
+    # 'django_opentracing.OpenTracingMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -122,26 +123,72 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
+LOGGING = {
+
+    'version': 1,
+    'disable_existing_loggers': False,
+
+    'formatters': {
+        'console': {
+            'format': '[%(module)s].%(levelname)s %(message)s'
+        }
+    },
+
+    'handlers': {
+        'logstash': {
+            'level': 'INFO',
+            'class': 'logstash.TCPLogstashHandler',
+            'host': os.environ.get('DJANGO_LOGSTASH_HOST'),
+            'port': os.environ.get('DJANGO_LOGSTASH_PORT'),
+            'version': 1,
+            'message_type': 'logstash',
+            'fqdn': True,
+            'tags': ['django'],
+        },
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'console'
+        },
+    },
+
+    'loggers': {
+        'app.logger': {
+            'handlers': ['logstash', 'console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'django': {
+            'handlers': ['logstash', 'console'],
+            'level': 'INFO',
+        },
+        'django.request': {
+            'handlers': ['logstash', 'console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        }
+    },
+}
 # OpenTracing settings
 
 # default tracer is opentracing.Tracer(), which does nothing
-OPENTRACING_TRACER_CALLABLE = __name__ + '.tracer'
+# OPENTRACING_TRACER_CALLABLE = __name__ + '.tracer'
 
-def tracer():
-    from jaeger_client import Config
-    config = Config(
-        config={ # usually read from some yaml config
-            'sampler': {
-                'type': 'const',
-                'param': 1,
-            },
-            'logging': True,
-        },
-        service_name='example')
-    return config.initialize_tracer()
+# def tracer():
+#     from jaeger_client import Config
+#     config = Config(
+#         config={ # usually read from some yaml config
+#             'sampler': {
+#                 'type': 'const',
+#                 'param': 1,
+#             },
+#             'logging': True,
+#         },
+#         service_name='example')
+#     return config.initialize_tracer()
 
-# default is False
-OPENTRACING_TRACE_ALL = True
+# # default is False
+# OPENTRACING_TRACE_ALL = True
 
-# default is []
-OPENTRACING_TRACED_ATTRIBUTES = ['META']
+# # default is []
+# OPENTRACING_TRACED_ATTRIBUTES = ['META']

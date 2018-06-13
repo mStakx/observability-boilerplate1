@@ -65,9 +65,10 @@ services:
     container_name: zipkin
     # Environment settings are defined here https://github.com/openzipkin/zipkin/tree/1.19.0/zipkin-server#environment-variables
     environment:
-      - STORAGE_TYPE=mysql
+      - STORAGE_TYPE=elasticsearch
+      - ES_HOSTS=elasticsearch:9200
       # Point the zipkin at the storage backend
-      - MYSQL_HOST=mysql
+      # - MYSQL_HOST=mysql
       # Uncomment to enable scribe
       # - SCRIBE_ENABLED=true
       # Uncomment to enable self-tracing

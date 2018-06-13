@@ -1,4 +1,5 @@
-FROM python:2.7.10
+FROM python:3
+# FROM python:2.7.10
 
 # Prepare os libs
 RUN apt-get update -y && apt-get upgrade -y && apt-get install -y \

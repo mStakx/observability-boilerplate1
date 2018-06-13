@@ -43,7 +43,8 @@ curl -XPUT localhost:8020/_template/logstash_1 -H 'Content-Type: application/jso
                              }
                            }
                            '
-
 echo "\n"
 
-curl -XGET localhost:8020/_template/
+curl -XGET localhost:8020/_template?pretty
+
+echo "\n"

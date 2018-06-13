@@ -1,4 +1,4 @@
-FROM logstash:5
+FROM logstash:5.6
 
 COPY deploy/logstash/logstash.conf /etc/logstash/conf.d/logstash.conf
 

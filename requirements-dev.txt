@@ -10,5 +10,5 @@ jaeger-client
 py-zipkin
 requests
 django-prometheus
-django_opentracing
+# django_opentracing
 futures

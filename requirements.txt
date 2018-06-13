@@ -35,5 +35,5 @@ py-zipkin
 requests
 django-prometheus
 psycopg2-binary	
-django_opentracing
+# django_opentracing
 futures
