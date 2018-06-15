@@ -41,4 +41,4 @@ MIT
 
 ## TODO
 
-- Polishing up the setup
+- Polishing the setup
