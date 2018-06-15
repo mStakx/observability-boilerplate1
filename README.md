@@ -2,6 +2,8 @@
 
 This is a simple observability boilerplate that is aimed at Log-Metric-Tracing collection
 
+![Observability Boilerplate #1](https://github.com/mStakx/observability-boilerplate1/blob/master/boilerplate.png)
+
 ## Components
 1. Application:	Python Django
 2. Log Collection: Elastic
