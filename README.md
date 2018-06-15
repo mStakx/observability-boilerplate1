@@ -9,7 +9,7 @@ This is a simple observability boilerplate that is aimed at Log-Metric-Tracing c
 4. Trace Collection: Zipkin
 5. Dashboarding: Kibana | Grafana | Zipkin
 
-Note: A huge thanks to @mordaha for building a [base seed project] (https://github.com/mordaha/django-docker-seed) on top of which this boilerplate is built.
+Note: A huge thanks to @mordaha for building a [base seed project](https://github.com/mordaha/django-docker-seed) on top of which this boilerplate is built.
 
 ## It uses:
 
