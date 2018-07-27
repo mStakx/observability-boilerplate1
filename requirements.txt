@@ -1,5 +1,6 @@
 # beautifulsoup4
 # django
+cython
 django-appconf
 # django-compressor
 django-environ
